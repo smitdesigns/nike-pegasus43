@@ -21,12 +21,13 @@ export default function Pegasus43Page() {
       {/* 1. Photo: 4:3 box, 375 x 281 px */}
       <div className="-mx-4 w-[calc(100%+2rem)] h-[281px] bg-[#E5E5E5] overflow-hidden">
         <img
+          data-testid="main-photo"
           src="/pegasus-43.svg"
           alt={`${productName} in ${colorway}`}
           width={375}
           height={281}
           decoding="async"
-          fetchPriority="low"
+          fetchPriority="high"
           className="block w-full h-full object-cover"
         />
       </div>
@@ -39,7 +40,10 @@ export default function Pegasus43Page() {
         <p className="text-[14px] leading-[20px] font-normal text-[#707072] truncate mt-0.5">
           {colorway}
         </p>
-        <p className="text-[16px] leading-[22px] font-semibold text-[#111111] tabular-nums mt-0.5">
+        <p
+          data-testid="price"
+          className="text-[16px] leading-[22px] font-semibold text-[#111111] tabular-nums mt-0.5"
+        >
           {formattedPrice}
         </p>
       </header>

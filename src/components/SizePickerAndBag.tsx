@@ -54,6 +54,7 @@ export default function SizePickerAndBag({ sizes }: SizePickerAndBagProps) {
     <>
       <section aria-label="Shoe sizes" className="h-[496px]">
         <div
+          data-testid="size-grid"
           role="radiogroup"
           aria-label="Select shoe size"
           className="grid grid-cols-3 grid-rows-9 gap-2 h-[496px]"
@@ -68,6 +69,7 @@ export default function SizePickerAndBag({ sizes }: SizePickerAndBagProps) {
               <button
                 key={item.sku}
                 type="button"
+                data-testid={isSoldOut ? "size-button-sold-out" : "size-button"}
                 role="radio"
                 aria-checked={isSelected}
                 aria-disabled={isSoldOut ? "true" : undefined}
