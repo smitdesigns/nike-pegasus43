@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 562" width="750" height="562" role="img" aria-label="Nike Pegasus 43 Black/White-Volt side profile illustration">
+  <defs>
+    <radialGradient id="studioGlow" cx="50%" cy="46%" r="58%">
+      <stop offset="0%" stop-color="#f7f7f7" />
+      <stop offset="100%" stop-color="#e5e5e5" />
+    </radialGradient>
+    <linearGradient id="upperGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#27272a" />
+      <stop offset="55%" stop-color="#141416" />
+      <stop offset="100%" stop-color="#09090b" />
+    </linearGradient>
+    <linearGradient id="midsoleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#ebebed" />
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8" />
+      <feOffset dx="0" dy="8" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.16" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Studio backdrop -->
+  <rect width="750" height="562" fill="url(#studioGlow)" />
+
+  <!-- Ground shadow -->
+  <ellipse cx="385" cy="404" rx="258" ry="18" fill="#c7c7cc" opacity="0.55" />
+  <ellipse cx="385" cy="401" rx="210" ry="10" fill="#a1a1aa" opacity="0.35" />
+
+  <g filter="url(#softShadow)">
+    <!-- Waffle rubber outsole (with toe spring) -->
+    <path
+      d="M108 326 C118 358 174 378 274 388 C392 398 532 396 632 374 C644 371 646 362 636 356 L118 322 Z"
+      fill="#111111"
+    />
+    <!-- Volt outsole traction pods -->
+    <path d="M138 350 L216 368 L212 376 L134 358 Z" fill="#ceff00" />
+    <path d="M472 381 L584 372 L582 380 L470 389 Z" fill="#ceff00" />
+
+    <!-- Sculpted ReactX foam midsole -->
+    <path
+      d="M104 316 C100 330 112 346 154 358 C248 384 446 388 624 366 C648 362 658 344 642 324 C616 306 520 310 380 314 C252 318 148 298 104 316 Z"
+      fill="url(#midsoleGrad)"
+      stroke="#d4d4d8"
+      stroke-width="1.5"
+    />
+    <!-- Midsole aerodynamic bevel line -->
+    <path
+      d="M128 332 C238 360 440 364 622 342"
+      fill="none"
+      stroke="#e4e4e7"
+      stroke-width="2.5"
+      stroke-linecap="round"
+    />
+    <!-- Dual Air Zoom windows in Volt -->
+    <rect x="174" y="344" width="64" height="8" rx="4" transform="rotate(8 174 344)" fill="#ceff00" />
+    <rect x="492" y="344" width="88" height="10" rx="5" transform="rotate(-3 492 344)" fill="#ceff00" />
+
+    <!-- Main engineered mesh upper (sleek low-profile runner) -->
+    <path
+      d="M114 312 C116 286 146 262 204 240 C252 222 292 188 326 164 C340 154 354 156 374 172 C410 202 456 218 504 214 C536 211 564 192 582 178 C598 166 614 172 624 196 C636 228 642 276 636 322 C634 334 620 340 598 344 C456 360 248 354 114 312 Z"
+      fill="url(#upperGrad)"
+    />
+
+    <!-- Midfoot breathable overlay panel -->
+    <path
+      d="M276 232 C320 226 364 218 418 232 C448 240 468 278 462 328 L292 324 C272 290 268 256 276 232 Z"
+      fill="#1f1f23"
+      opacity="0.7"
+    />
+
+    <!-- Sculpted padded collar + Volt heel pull loop -->
+    <path
+      d="M332 166 C348 152 362 154 382 170 C416 198 460 214 506 210 C538 207 564 192 582 178 C572 204 544 228 500 232 C442 238 386 214 332 166 Z"
+      fill="#27272a"
+    />
+    <path d="M598 174 L624 156 L632 172 L608 188 Z" fill="#ceff00" />
+
+    <!-- Tongue & racing laces -->
+    <path
+      d="M314 180 C294 172 276 176 268 188 C264 195 278 206 300 214 L350 236 L364 212 Z"
+      fill="#27272a"
+    />
+    <g stroke="#f4f4f5" stroke-width="4" stroke-linecap="round">
+      <line x1="296" y1="202" x2="334" y2="188" />
+      <line x1="274" y1="216" x2="314" y2="202" />
+      <line x1="252" y1="230" x2="294" y2="216" />
+      <line x1="232" y1="244" x2="274" y2="230" />
+    </g>
+    <g fill="#ceff00">
+      <circle cx="334" cy="188" r="3.5" />
+      <circle cx="314" cy="202" r="3.5" />
+      <circle cx="294" cy="216" r="3.5" />
+      <circle cx="274" cy="230" r="3.5" />
+    </g>
+
+    <!-- Dynamic side Swoosh-inspired blade in White + Volt edge -->
+    <path
+      d="M278 266 C356 292 464 282 598 228 C514 284 402 316 294 304 C262 300 254 276 278 266 Z"
+      fill="#ffffff"
+    />
+    <path
+      d="M294 277 C368 298 468 288 584 240 C506 288 408 312 308 302 C282 299 276 283 294 277 Z"
+      fill="#ceff00"
+    />
+
+    <!-- Subtle forefoot perforation texture -->
+    <g fill="#3f3f46" opacity="0.75">
+      <circle cx="176" cy="286" r="2" />
+      <circle cx="190" cy="282" r="2" />
+      <circle cx="204" cy="278" r="2" />
+      <circle cx="164" cy="298" r="2" />
+      <circle cx="178" cy="294" r="2" />
+      <circle cx="192" cy="290" r="2" />
+      <circle cx="206" cy="286" r="2" />
+      <circle cx="188" cy="302" r="2" />
+      <circle cx="202" cy="298" r="2" />
+      <circle cx="216" cy="294" r="2" />
+    </g>
+  </g>
+</svg>
