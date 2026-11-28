@@ -1,8 +1,8 @@
 # Live Production Lighthouse & Slow 4G Report — Nike Pegasus 43
 
 - **Production URL**: `https://nike-pegasus43.vercel.app/pegasus-43` (root `https://nike-pegasus43.vercel.app` redirects to `/pegasus-43`)
-- **Deployment URL**: `https://nike-pegasus43-2itadhxno-zero-985a.vercel.app`
-- **Deployment ID**: `dpl_3CXfd8wqqQTJMJtCFp6BF178Ddsq`
+- **Deployment URL**: `https://nike-pegasus43-4rdoalmrr-zero-985a.vercel.app`
+- **Deployment ID**: `dpl_4Q3gPp8oJKdUtHTooZuAWxXXwMB7`
 - **HTTP Verification**: `HTTP/1.1 200 OK` (`X-Matched-Path: /pegasus-43`, `X-Nextjs-Prerender: 1`)
 - **Profile**: `Web_Platform_Slow_4G_Mobile_Check_Profile.yaml`
 
@@ -36,10 +36,10 @@ The live Slow 4G CDP verification also confirmed `window.innerWidth === 375`, `w
 
 | Run | Performance Score | FCP | LCP | TBT | CLS | Speed Index | JSON Artifact |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Run 1 | **100** | `1135 ms` | `1259 ms` | `6 ms` | `0` | `1376 ms` | [lighthouse-live-1.json](lighthouse-live-1.json) |
-| Run 2 | **100** | `802 ms` | `1436 ms` | `17 ms` | `0` | `802 ms` | [lighthouse-live-2.json](lighthouse-live-2.json) |
-| Run 3 | **100** | `798 ms` | `924 ms` | `24 ms` | `0` | `798 ms` | [lighthouse-live-3.json](lighthouse-live-3.json) |
-| **Median** | **100** | **`802 ms`** | **`1259 ms`** | **`17 ms`** | **`0`** | **`802 ms`** | — |
+| Run 1 | **100** | `768 ms` | `782 ms` | `5 ms` | `0` | `768 ms` | [lighthouse-live-1.json](lighthouse-live-1.json) |
+| Run 2 | **100** | `792 ms` | `1427 ms` | `11 ms` | `0` | `792 ms` | [lighthouse-live-2.json](lighthouse-live-2.json) |
+| Run 3 | **100** | `780 ms` | `1080 ms` | `5 ms` | `0` | `2057 ms` | [lighthouse-live-3.json](lighthouse-live-3.json) |
+| **Median** | **100** | **`780 ms`** | **`1080 ms`** | **`5 ms`** | **`0`** | **`792 ms`** | — |
 
 ---
 
@@ -69,7 +69,10 @@ Live 375 px screenshot: [live-pegasus-375.png](live-pegasus-375.png)
 ## 5. What Was Changed
 
 - `data/pegasus-sizes.json`: Replaced size snapshot with the 8 December 2026 inventory (`26` sizes: `9` sold out, `7` low stock, `10` in stock).
-- `src/components/SizePickerAndBag.tsx`: Improved sold-out text contrast to `#52525B` on `#F4F4F5` (`~7.0:1`), added a dashed `#D4D4D8` border, `1.5 px` strikethrough, and `<span className="sr-only">, sold out</span>` inside sold-out buttons while keeping `aria-label` ending in `"sold out"`, `aria-disabled="true"`, `tabIndex={-1}`, and `data-testid="size-button-sold-out"`.
+- `public/pegasus-43.svg`: Upgraded the `1125 × 843` (`3×` DPR) studio vector illustration with multi-stop studio lighting, sculpted ReactX midsole grooves, Flywire lace accents, waffle lugs, and heel stabilizer.
+- `src/app/pegasus-43/page.tsx`: Refined editorial header typography (`#111111` / `#6E6E73`, `tabular-nums` `$140`) and `#EBEBED` studio backdrop inside the fixed `281 px` and `88 px` slots.
+- `src/components/SizePickerAndBag.tsx`: Upgraded tiles to `rounded-[14px]` with subtle surface depth, `touch-manipulation`, refined Volt `LOW` pills, high-contrast `#52525B` on `#F5F5F7` (`~7.0:1`) sold-out tiles with dashed border, `1.5 px` strikethrough, and `<span className="sr-only">, sold out</span>`, plus a Nike-style Add to bag pill with shopping bag & Volt checkmark states.
+- `src/components/ReviewsSection.tsx`, `src/components/TechCopySection.tsx`, `src/components/SectionSkeletons.tsx`: Refined Pinterest-style `rounded-[18px]` `#F5F5F7` editorial cards and 2×2 spec bento grid with vector micro-icons and matching fixed-height skeletons.
 - `.gitignore`: Added `.vercel` and `.env*` so deployment metadata and secrets are never committed.
 
 ---
@@ -78,6 +81,6 @@ Live 375 px screenshot: [live-pegasus-375.png](live-pegasus-375.png)
 
 - **Assumptions**:
   - Deployed to Vercel production (`--prod`) under the signed-in Vercel account (`smitdoesdesign-1518`, team `zero-985a`, project `nike-pegasus43`), connected to GitHub repository `https://github.com/smitdesigns/nike-pegasus43`.
-  - Used `#52525B` text on `#F4F4F5` (`~7.0:1` WCAG contrast) plus a dashed `#D4D4D8` border and strikethrough so sold-out buttons remain visibly muted yet readable outdoors in daylight without relying on colour alone.
-  - Because `docs/live-lighthouse-report.md`, `docs/phone-test.md`, `docs/live-pegasus-375.png`, and the three Lighthouse JSON artifacts are generated after deploying and testing the live URL, committing these documentation files to GitHub does not alter application code (`src/`, `data/`, `public/`, `speed-budget.json`, `next.config.ts`).
+  - Used `#52525B` text on `#F5F5F7` (`~7.0:1` WCAG contrast) plus a dashed `#D1D1D6` border and strikethrough so sold-out buttons remain visibly muted yet readable outdoors in daylight without relying on colour alone.
+  - Because `docs/live-lighthouse-report.md`, `docs/live-pegasus-375.png`, and the three Lighthouse JSON artifacts are generated after deploying and testing the live URL, committing these documentation files to GitHub does not alter application code.
 - **Anything unmeasured or unfixed**: `none`.
