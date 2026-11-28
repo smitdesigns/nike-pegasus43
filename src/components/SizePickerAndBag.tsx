@@ -79,15 +79,16 @@ export default function SizePickerAndBag({ sizes }: SizePickerAndBagProps) {
                 className={[
                   "relative h-[48px] w-full rounded-xl border px-1 text-[11px] leading-none tracking-[-0.01em] flex items-center justify-center select-none transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#111111] focus-visible:ring-offset-1",
                   isSoldOut
-                    ? "bg-[#F5F5F5] text-[#A1A1AA] border-[#EBEBEB] opacity-65 cursor-not-allowed"
+                    ? "bg-[#F4F4F5] text-[#52525B] border-dashed border-[#D4D4D8] cursor-not-allowed"
                     : isSelected
                       ? "bg-[#111111] text-white border-[#111111] font-semibold shadow-sm active:scale-[0.97] cursor-pointer"
                       : "bg-white text-[#111111] border-[#E5E5E5] font-medium hover:border-[#111111] hover:bg-[#FAFAFA] active:scale-[0.97] cursor-pointer",
                 ].join(" ")}
               >
-                <span className={isSoldOut ? "line-through decoration-[#A1A1AA]" : undefined}>
+                <span className={isSoldOut ? "line-through decoration-[#52525B] decoration-[1.5px]" : undefined}>
                   {item.size_label}
                 </span>
+                {isSoldOut && <span className="sr-only">, sold out</span>}
                 {isLowStock && (
                   <span
                     aria-hidden="true"
