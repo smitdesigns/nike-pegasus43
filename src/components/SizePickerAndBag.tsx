@@ -77,15 +77,15 @@ export default function SizePickerAndBag({ sizes }: SizePickerAndBagProps) {
                 tabIndex={isSoldOut ? -1 : 0}
                 onClick={isSoldOut ? undefined : () => handleSelectSize(item)}
                 className={[
-                  "relative h-[48px] w-full rounded-xl border px-1 text-[11px] leading-none tracking-[-0.01em] flex items-center justify-center select-none transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#111111] focus-visible:ring-offset-1",
+                  "relative h-[48px] w-full rounded-[14px] border px-1 text-[11px] leading-none tracking-[-0.01em] flex items-center justify-center select-none touch-manipulation transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#111111] focus-visible:ring-offset-1",
                   isSoldOut
-                    ? "bg-[#F4F4F5] text-[#52525B] border-dashed border-[#D4D4D8] cursor-not-allowed"
+                    ? "bg-[#F5F5F7] text-[#52525B] border-dashed border-[#D1D1D6] cursor-not-allowed"
                     : isSelected
-                      ? "bg-[#111111] text-white border-[#111111] font-semibold shadow-sm active:scale-[0.97] cursor-pointer"
-                      : "bg-white text-[#111111] border-[#E5E5E5] font-medium hover:border-[#111111] hover:bg-[#FAFAFA] active:scale-[0.97] cursor-pointer",
+                      ? "bg-[#111111] text-white border-[#111111] font-semibold shadow-[0_4px_12px_rgba(17,17,17,0.18)] active:scale-[0.96] cursor-pointer"
+                      : "bg-white text-[#111111] border-[#E2E2E6] font-medium shadow-[0_1px_2px_rgba(0,0,0,0.03)] hover:border-[#111111] hover:shadow-[0_2px_6px_rgba(0,0,0,0.06)] active:scale-[0.96] cursor-pointer",
                 ].join(" ")}
               >
-                <span className={isSoldOut ? "line-through decoration-[#52525B] decoration-[1.5px]" : undefined}>
+                <span className={isSoldOut ? "line-through decoration-[#52525B]/85 decoration-[1.5px]" : undefined}>
                   {item.size_label}
                 </span>
                 {isSoldOut && <span className="sr-only">, sold out</span>}
@@ -93,10 +93,10 @@ export default function SizePickerAndBag({ sizes }: SizePickerAndBagProps) {
                   <span
                     aria-hidden="true"
                     className={[
-                      "absolute top-1 right-1 rounded px-1 py-[1px] text-[8px] font-bold uppercase leading-none tracking-wider",
+                      "absolute top-[4px] right-[5px] rounded-full px-1.5 py-[1.5px] text-[7.5px] font-bold uppercase leading-none tracking-[0.06em]",
                       isSelected
                         ? "bg-[#CEFF00] text-[#111111]"
-                        : "bg-[#CEFF00]/75 text-[#111111]",
+                        : "bg-[#CEFF00]/85 text-[#111111] ring-1 ring-[#B8E600]/60",
                     ].join(" ")}
                   >
                     low
@@ -115,12 +115,12 @@ export default function SizePickerAndBag({ sizes }: SizePickerAndBagProps) {
           onClick={handleAddToBag}
           aria-live="polite"
           className={[
-            "h-[56px] w-full rounded-full text-[15px] font-semibold tracking-[-0.01em] flex items-center justify-center gap-2 transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#111111] focus-visible:ring-offset-2",
+            "h-[56px] w-full rounded-full text-[15px] font-semibold tracking-[-0.01em] flex items-center justify-center gap-2 touch-manipulation transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#111111] focus-visible:ring-offset-2",
             !selectedSize
-              ? "bg-[#F5F5F5] text-[#A1A1AA] border border-[#E5E5E5] cursor-not-allowed"
+              ? "bg-[#F5F5F7] text-[#6E6E73] border border-[#E5E5EA] cursor-not-allowed"
               : justAdded
-                ? "bg-[#CEFF00] text-[#111111] border border-[#B8E600] shadow-sm cursor-pointer"
-                : "bg-[#111111] text-white hover:bg-[#27272A] active:scale-[0.99] shadow-sm cursor-pointer",
+                ? "bg-[#CEFF00] text-[#111111] border border-[#B8E600] shadow-[0_6px_16px_rgba(206,255,0,0.3)] cursor-pointer"
+                : "bg-[#111111] text-white hover:bg-[#1D1D1F] active:scale-[0.98] shadow-[0_6px_16px_rgba(17,17,17,0.16)] cursor-pointer",
           ].join(" ")}
         >
           {!selectedSize ? (
@@ -136,7 +136,7 @@ export default function SizePickerAndBag({ sizes }: SizePickerAndBagProps) {
                 <path
                   d="M3.5 8.5L6.5 11.5L12.5 4.5"
                   stroke="currentColor"
-                  strokeWidth="2"
+                  strokeWidth="2.2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
@@ -144,7 +144,28 @@ export default function SizePickerAndBag({ sizes }: SizePickerAndBagProps) {
               <span>Added</span>
             </>
           ) : (
-            `Add size ${selectedSize.size_label} to bag`
+            <>
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 16 16"
+                fill="none"
+                className="w-4 h-4 shrink-0 opacity-90"
+              >
+                <path
+                  d="M4 5.5H12L12.75 13H3.25L4 5.5Z"
+                  stroke="currentColor"
+                  strokeWidth="1.4"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M6 5.5V4.5C6 3.39543 6.89543 2.5 8 2.5C9.10457 2.5 10 3.39543 10 4.5V5.5"
+                  stroke="currentColor"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                />
+              </svg>
+              <span>{`Add size ${selectedSize.size_label} to bag`}</span>
+            </>
           )}
         </button>
       </div>

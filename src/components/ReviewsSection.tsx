@@ -32,22 +32,22 @@ export default function ReviewsSection() {
   return (
     <section
       aria-label="Customer reviews"
-      className="mt-6 pt-6 border-t border-[#E5E5E5] h-[384px] overflow-hidden"
+      className="mt-6 pt-6 border-t border-[#E5E5EA] h-[384px] overflow-hidden"
     >
       <div className="flex items-center justify-between h-[28px]">
-        <h2 className="text-[16px] font-bold tracking-[-0.01em] text-[#111111]">
+        <h2 className="text-[16px] font-bold tracking-[-0.015em] text-[#111111]">
           Reviews
         </h2>
-        <span className="inline-flex items-center gap-1 rounded-full bg-[#F5F5F5] px-2.5 py-1 text-[12px] font-semibold text-[#111111]">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-[#F5F5F7] border border-[#EBEBEF] px-2.5 py-1 text-[12px] font-semibold text-[#111111]">
           <span>★ 4.8</span>
-          <span className="text-[#707072] font-normal">(142)</span>
+          <span className="text-[#6E6E73] font-normal">(142)</span>
         </span>
       </div>
       <div className="mt-3 space-y-2.5">
         {REVIEWS.map((review) => (
           <article
             key={review.id}
-            className="h-[96px] rounded-2xl bg-[#F5F5F5] p-3.5 flex flex-col justify-between overflow-hidden"
+            className="h-[96px] rounded-[18px] bg-[#F5F5F7] border border-[#EBEBEF] p-3.5 flex flex-col justify-between overflow-hidden"
           >
             <div className="flex items-center justify-between text-[12px]">
               <div className="flex items-center gap-2 min-w-0">
@@ -60,7 +60,7 @@ export default function ReviewsSection() {
                 <span className="font-semibold text-[#111111] truncate">
                   {review.author}
                 </span>
-                <span className="text-[#707072]">· {review.date}</span>
+                <span className="text-[#6E6E73]">· {review.date}</span>
               </div>
               <span
                 className="font-semibold text-[#111111] tracking-tight shrink-0"
@@ -69,7 +69,7 @@ export default function ReviewsSection() {
                 {review.rating}
               </span>
             </div>
-            <p className="text-[12.5px] leading-[17px] text-[#3F3F46] line-clamp-2">
+            <p className="text-[12.5px] leading-[17px] text-[#3A3A3C] line-clamp-2">
               {review.body}
             </p>
           </article>

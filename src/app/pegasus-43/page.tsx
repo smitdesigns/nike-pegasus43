@@ -19,7 +19,7 @@ export default function Pegasus43Page() {
   return (
     <main className="max-w-[375px] mx-auto px-4 pb-8 bg-white">
       {/* 1. Photo: 4:3 box, 375 x 281 px */}
-      <div className="-mx-4 w-[calc(100%+2rem)] h-[281px] bg-[#E5E5E5] overflow-hidden">
+      <div className="-mx-4 w-[calc(100%+2rem)] h-[281px] bg-[#EBEBED] border-b border-[#EFEFF2] overflow-hidden">
         <img
           data-testid="main-photo"
           src="/pegasus-43.svg"
@@ -34,15 +34,15 @@ export default function Pegasus43Page() {
 
       {/* 2. Name, colorway and price: 88 px tall */}
       <header className="h-[88px] flex flex-col justify-center overflow-hidden">
-        <h1 className="text-[22px] leading-[26px] font-bold tracking-[-0.02em] text-[#111111] truncate">
+        <h1 className="text-[22px] leading-[26px] font-bold tracking-[-0.025em] text-[#111111] truncate">
           {productName}
         </h1>
-        <p className="text-[14px] leading-[20px] font-normal text-[#707072] truncate mt-0.5">
+        <p className="text-[13px] leading-[18px] font-medium text-[#6E6E73] truncate mt-0.5">
           {colorway}
         </p>
         <p
           data-testid="price"
-          className="text-[16px] leading-[22px] font-semibold text-[#111111] tabular-nums mt-0.5"
+          className="text-[17px] leading-[22px] font-semibold tracking-[-0.01em] text-[#111111] tabular-nums mt-0.5"
         >
           {formattedPrice}
         </p>
