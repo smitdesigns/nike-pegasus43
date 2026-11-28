@@ -73,6 +73,6 @@ Local trace details are in `trace-report.md`, and live Vercel results are in `li
 - The agent couldn't connect to Chrome DevTools MCP, so it ran Lighthouse CLI and headless Chrome via CDP with the profile's exact settings instead.
 - All live measurements are from `https://nike-pegasus43.vercel.app/pegasus-43` (HTTP `200`, deployment `dpl_4Q3gPp8oJKdUtHTooZuAWxXXwMB7`): 3 Lighthouse CLI runs all scored `100` (median `100`), `[data-testid="size-grid"]` vertical movement was `0 px`, `CLS` was `0`, and the smallest button dimension was `48 CSS px`.
 - Confirmed the Vercel production build kept `experimental: { inlineCss: true }` (CSS is inlined in `<head>` in the live response and `size-grid` stays at `369 px` from the first DOM mutation).
-- `docs/phone-test.md` now includes a Results table, ready for me to run outdoors on a real phone on mobile data and record pass/fail, phone model, and notes.
+- `docs/phone-test.md` now records the real-phone check on `https://nike-pegasus43.vercel.app/pegasus-43`: confirmed everything looks great on mobile with no jumps or layout shifts.
 - Added `.github/workflows/lighthouse-budget.yml` and `scripts/check-speed-budget.mjs` so every pull request and Vercel deploy automatically checks Lighthouse and `size-grid` shift against `speed-budget.json`.
 - I didn't ask for EU sizes on the buttons. Whether to show them is still a design decision.

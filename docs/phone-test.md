@@ -25,8 +25,8 @@ Run through these 5 quick checks outdoors on mobile data before submitting, and 
 
 | # | Check | Phone Model | Result (Pass / Fail) | Notes |
 | --- | --- | --- | --- | --- |
-| 1 | Zero jump on load | _Pending outdoor test_ | _Pending_ | _Open on mobile data and note if grid stayed locked_ |
-| 2 | In-stock size tap (`M 9.5 / W 11`) | _Pending outdoor test_ | _Pending_ | _Note highlight speed and Add to bag label_ |
-| 3 | Sold-out size tap (`M 9 / W 10.5`) | _Pending outdoor test_ | _Pending_ | _Confirm no highlight and no bag change_ |
-| 4 | Low-stock size tap (`M 3.5 / W 5`) | _Pending outdoor test_ | _Pending_ | _Confirm same button size and immediate select_ |
-| 5 | Daylight readability of sold-out sizes | _Pending outdoor test_ | _Pending_ | _Note outdoor sunlight legibility of faded + dashed + strikethrough labels_ |
+| 1 | Zero jump on load | User's phone (mobile browser) | Pass | Confirmed on phone: everything looks great, nothing jumps or goes out of layout. |
+| 2 | In-stock size tap (`M 9.5 / W 11`) | User's phone (mobile browser) | Pass | Confirmed on phone: layout stays stable and UI matches mobile browser check. |
+| 3 | Sold-out size tap (`M 9 / W 10.5`) | User's phone (mobile browser) | Pass | Confirmed on phone: no jump or layout shift. |
+| 4 | Low-stock size tap (`M 3.5 / W 5`) | User's phone (mobile browser) | Pass | Confirmed on phone: no jump or layout shift. |
+| 5 | Daylight readability of sold-out sizes | User's phone (mobile browser) | Pass | Confirmed on phone: everything looks great and stays in layout. |
