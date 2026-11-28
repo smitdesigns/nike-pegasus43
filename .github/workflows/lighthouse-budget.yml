@@ -1,0 +1,106 @@
+name: Slow 4G Speed Budget Check
+
+on:
+  pull_request:
+    branches: [main]
+  deployment_status:
+  workflow_dispatch:
+    inputs:
+      target_url:
+        description: "Full URL to /pegasus-43 (leave empty for live production URL)"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+  deployments: read
+
+jobs:
+  lighthouse-budget:
+    if: >
+      github.event_name != 'deployment_status' ||
+      github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install budget runner tools (isolated from app dependencies)
+        run: |
+          mkdir -p /tmp/budget-runner
+          npm install --prefix /tmp/budget-runner --no-save lighthouse chrome-launcher playwright
+          /tmp/budget-runner/node_modules/.bin/playwright install chromium
+
+      - name: Resolve Vercel deployment URL (or fall back to local production build)
+        id: target
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERCEL_BYPASS: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+        run: |
+          set -euo pipefail
+          URL=""
+          SOURCE="vercel"
+
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ inputs.target_url }}" ]; then
+            URL="${{ inputs.target_url }}"
+          elif [ "${{ github.event_name }}" = "deployment_status" ]; then
+            BASE_URL="${{ github.event.deployment_status.target_url }}"
+            URL="${BASE_URL%/}/pegasus-43"
+          elif [ "${{ github.event_name }}" = "pull_request" ]; then
+            SHA="${{ github.event.pull_request.head.sha }}"
+            echo "Waiting up to 180s for Vercel preview deployment on commit $SHA..."
+            for i in $(seq 1 36); do
+              DEPLOY_URL=$(gh api "repos/${{ github.repository }}/deployments?sha=$SHA" --jq '.[0].id // empty' | xargs -I{} gh api "repos/${{ github.repository }}/deployments/{}/statuses" --jq '.[] | select(.state=="success") | .target_url' 2>/dev/null | head -n 1 || true)
+              if [ -n "$DEPLOY_URL" ]; then
+                URL="${DEPLOY_URL%/}/pegasus-43"
+                break
+              fi
+              sleep 5
+            done
+          fi
+
+          if [ -n "$URL" ]; then
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" ${VERCEL_BYPASS:+-H "x-vercel-protection-bypass: $VERCEL_BYPASS"} "$URL" || echo "000")
+            echo "Probed $URL -> HTTP $STATUS"
+            if [ "$STATUS" != "200" ]; then
+              echo "Vercel URL returned HTTP $STATUS (for example protected preview without VERCEL_AUTOMATION_BYPASS_SECRET); falling back to local production server."
+              URL=""
+            fi
+          fi
+
+          if [ -z "$URL" ]; then
+            SOURCE="local-prod"
+            URL="http://127.0.0.1:3000/pegasus-43"
+          fi
+
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+          echo "source=$SOURCE" >> "$GITHUB_OUTPUT"
+
+      - name: Build and start production server (fallback when preview URL unavailable)
+        if: steps.target.outputs.source == 'local-prod'
+        run: |
+          npm ci
+          npm run build
+          nohup npm run start -- -p 3000 > /tmp/next-start.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl -s -o /dev/null http://127.0.0.1:3000/pegasus-43; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/next-start.log
+          exit 1
+
+      - name: Run Slow 4G Lighthouse & size-grid budget check against speed-budget.json
+        env:
+          TARGET_URL: ${{ steps.target.outputs.url }}
+          BUDGET_RUNNER_NODE_MODULES: /tmp/budget-runner/node_modules
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+        run: node scripts/check-speed-budget.mjs

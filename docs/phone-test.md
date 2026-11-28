@@ -3,7 +3,7 @@
 Live URL to open on your phone:
 `https://nike-pegasus43.vercel.app/pegasus-43`
 
-Run through these 5 quick checks before submitting:
+Run through these 5 quick checks outdoors on mobile data before submitting, and record your observations in the Results table below.
 
 1. **Zero jump on load**
    - Open `https://nike-pegasus43.vercel.app/pegasus-43` (ideally on cellular / Slow 4G or after clearing cache).
@@ -20,3 +20,13 @@ Run through these 5 quick checks before submitting:
 5. **Daylight readability**
    - Step into bright light / turn phone brightness up outdoors and look at the 9 sold-out sizes (`M 4.5 / W 6`, `M 6 / W 7.5`, `M 9 / W 10.5`, `M 10 / W 11.5`, `M 11.5 / W 13`, `M 14 / W 15.5`, `M 15 / W 16.5`, `M 15.5 / W 17`, `M 16 / W 17.5`).
    - Confirm every faded label is still easy to read and clearly distinguishable from available sizes by both its strikethrough and dashed border.
+
+## Results (Real Phone Log)
+
+| # | Check | Phone Model | Result (Pass / Fail) | Notes |
+| --- | --- | --- | --- | --- |
+| 1 | Zero jump on load | _Pending outdoor test_ | _Pending_ | _Open on mobile data and note if grid stayed locked_ |
+| 2 | In-stock size tap (`M 9.5 / W 11`) | _Pending outdoor test_ | _Pending_ | _Note highlight speed and Add to bag label_ |
+| 3 | Sold-out size tap (`M 9 / W 10.5`) | _Pending outdoor test_ | _Pending_ | _Confirm no highlight and no bag change_ |
+| 4 | Low-stock size tap (`M 3.5 / W 5`) | _Pending outdoor test_ | _Pending_ | _Confirm same button size and immediate select_ |
+| 5 | Daylight readability of sold-out sizes | _Pending outdoor test_ | _Pending_ | _Note outdoor sunlight legibility of faded + dashed + strikethrough labels_ |
